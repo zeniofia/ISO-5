@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node src/engine/IsoFiveCore.ts"
+    "dev": "ts-node src/engine/IsoFiveCore.ts",
+    "backtest": "ts-node src/backtest/run.ts"
   },
   "dependencies": {
     "openclaw-sdk": "^1.0.0",
