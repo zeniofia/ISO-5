@@ -70,6 +70,106 @@ For developers: see `src/engine/IsoFiveCore.ts`,
 Build confidently—ISO‑5 is open, modular, and engineered for
 institutional deployment. let's claw! 👊
 
+---
+
+## ✨ New Features
+
+### 🛡️ Risk Management (`src/risk/RiskManager.ts`)
+- **Position Sizing**: Kelly-based sizing with configurable risk per trade
+- **Stop-Loss / Take-Profit**: Automatic SL/TP levels on every position
+- **Drawdown Limits**: Max drawdown % threshold to pause trading
+- **Position Caps**: Max notional value per trade enforced
+
+**Config:**
+```ts
+const riskConfig: RiskConfig = {
+  riskPerTrade: 2,           // 2% per trade
+  maxDrawdown: 20,           // pause if down 20%
+  maxPositionSize: 5000,     // max USD per trade
+  stopLossPercent: 2,        // 2% SL
+  takeProfitPercent: 5,      // 5% TP
+  maxLeverage: 1.0
+};
+```
+
+### 📊 Performance Analytics (`src/analytics/PerformanceTracker.ts`)
+- **Trade History**: Record every entry/exit with PnL
+- **Win Rate**: Win % tracking
+- **Sharpe Ratio**: Risk-adjusted returns (annualized)
+- **Profit Factor**: Ratio of gross wins to gross losses
+- **CSV Export**: Export all trades for external analysis
+
+**Metrics snapshot every 10 trades:**
+```json
+{
+  "totalTrades": 100,
+  "winRate": 52.5,
+  "sharpeRatio": 1.23,
+  "totalReturn": 18.5,
+  "totalPnL": 1850
+}
+```
+
+### 📡 Real-Time Telemetry (`src/telemetry/Telemetry.ts`)
+- **Structured Logging**: DEBUG, INFO, WARN, ERROR levels
+- **Event History**: Last 1000 events in memory
+- **Query Logs**: Filter by level, limit, export to CSV
+- **Error Tracking**: Capture and report last error
+
+**Usage:**
+```ts
+telemetry.info('[Trade]', { signal: 'LONG', price: 45230 });
+telemetry.warn('SL triggered', { amount: -250 });
+const logs = telemetry.getLogs({ level: 'ERROR', limit: 20 });
+```
+
+---
+
+## 🏗️ Architecture
+
+```
+src/
+├── engine/          IsoFiveCore orchestrator with risk integration
+├── strategies/      MomentumClaw (extend with RSI, MACD, etc.)
+├── integrations/    PolymarketProvider (CLOB/Gamma calls)
+├── risk/            RiskManager (position sizing, stops)
+├── analytics/       PerformanceTracker (stats & PnL)
+└── telemetry/       Telemetry (logging & monitoring)
+```
+
+All modules are injectable and testable. Extend `MomentumClaw` to add new signal types, or swap `PolymarketProvider` for other market connectors.
+
+---
+
+## 🧪 Backtesting
+
+The `Backtester` class allows you to replay historical candle data
+(e.g. CSV of timestamp,price) and drive the ISO‑5 engine offline.  It
+monkey‑patches the provider to feed pre‑recorded prices and records all
+trade history using the normal performance tracker.
+
+**Usage example**:
+```ts
+import { IsoFiveCore } from './src/engine/IsoFiveCore';
+import { Backtester } from './src/backtest/Backtester';
+
+const core = new IsoFiveCore(10000);
+const bt = new Backtester(core);
+bt.loadCsv('data/btc_5m.csv');
+const result = bt.run();
+console.log('Result', result);
+```
+
+### Interpreting results
+- `trades` – total executed orders
+- `winRate` – % profitable trades
+- `totalPnL` – net profit over the period
+- `periodStart` / `periodEnd` – covered timeframe
+
+The output metrics mirror what you’d see in live `core.getStatus()`.
+
+---
+
 # Key Features
 
 * **Modern ES6+ JavaScript features**: Advanced implementation with optimized performance and comprehensive error handling.

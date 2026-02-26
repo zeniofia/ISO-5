@@ -1,4 +1,4 @@
-interface MarketData {
+export interface MarketData {
   timestamp: number;
   price: number;
 }
