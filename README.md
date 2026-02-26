@@ -1,17 +1,74 @@
-# CorGun: Load-balanced CorGunSyncRelayBlock orchestrates data replication and auto-scaling to deliver real-time, fault-tolerant optimizer Implementation
-> Advanced javascript solution leveraging modern architecture patterns and cutting-edge technology.
+# ISO-5: Institutional Scale Open-source 5-minute Agent
 
-Load-balanced CorGunSyncRelayBlock orchestrates data replication and auto-scaling to deliver real-time, fault-tolerant optimizer.
+![OpenClaw Verified](https://img.shields.io/badge/OpenClaw-Verified-blue)
+![Polymarket API](https://img.shields.io/badge/Polymarket-API-green)
+![5m-Interval-Locked](https://img.shields.io/badge/Interval-5m--Locked-red)
 
-CorGun is designed to provide developers and professionals with a robust, efficient, and scalable solution for their javascript development needs. This implementation focuses on performance, maintainability, and ease of use, incorporating industry best practices and modern software architecture patterns.
+A production‑grade framework built around the **OpenClaw** SDK that
+specializes in high‑frequency trading on Polymarket's BTC Upside/Downside
+markets. ISO-5 is opinionated: data is clawed every 15 seconds, but
+trade logic only fires on the first tick of each 5‑minute candle. A
+circuit breaker safeguards the agent from sustained losing streaks.
 
-The primary purpose of CorGun is to streamline development workflows and enhance productivity through innovative features and comprehensive functionality. Whether you're building enterprise applications, data processing pipelines, or interactive systems, CorGun provides the foundation you need for successful project implementation.
+---
 
-CorGun's key benefits include:
+## 🛠️ Setup (GitHub Codespaces)
 
-* **High-performance architecture**: Leveraging optimized algorithms and efficient data structures for maximum performance.
-* **Modern development patterns**: Implementing contemporary software engineering practices and design patterns.
-* **Comprehensive testing**: Extensive test coverage ensuring reliability and maintainability.
+1. **Clone** the repository and open in a Codespace.
+2. Copy `.env.example` to `.env` and populate values:
+   ```bash
+   POLY_API_KEY=...
+   WALLET_PK=...
+   RPC_URL=...
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Build or run in dev mode:
+   ```bash
+   npm run build       # compile to dist/
+   npm run start       # run compiled agent
+   npm run dev         # run directly with ts-node for rapid iteration
+   ```
+
+> **Tip:** Codespaces already include Node ≥18 and GitHub CLI for
+> seamless environment setup.
+
+---
+
+## 📐 Design Theory
+
+The core principle behind ISO‑5 is **Interval Isolation**.  While markets
+are noisy at sub‑minute resolution, five‑minute candles strike a
+balance between actionable momentum and noise suppression. By clawing
+raw data every 15 seconds, the agent maintains fresh velocity metrics
+without executing trades until the candle boundary, ensuring consistency
+and repeatability across deployments.
+
+### Why 5 minutes?
+
+1. **Liquidity window** – Polymarket order books are deepest around
+   the 5‑minute mark.
+2. **Transaction cadence** – Limits gas expenditure and avoids
+   over‑trading.
+3. **Statistical efficiency** – 5‑minute returns show clearer momentum
+   signals for BTC than 1‑minute or 1‑hour buckets.
+
+### Circuit Breaker
+
+A simple three‑loss rule halts the agent if three consecutive 5‑minute
+trades are unprofitable. This prevents runaway drawdown during regime
+shifts or API outages.
+
+---
+
+For developers: see `src/engine/IsoFiveCore.ts`,
+`src/strategies/MomentumClaw.ts` and
+`src/integrations/PolymarketProvider.ts` for extensible building blocks.
+
+Build confidently—ISO‑5 is open, modular, and engineered for
+institutional deployment. let's claw! 👊
 
 # Key Features
 
