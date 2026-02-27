@@ -1,5 +1,3 @@
-**Community Launched Token – supporting it! Contract address: `11iqgCuxdFoGU52Ky9dcgLDk7f3uZegDudcCyT3pump`**
-
 ![ISO-5 Banner](./banner.png)
 
 # ISO-5: Institutional Scale Open-source 5-minute Agent
