@@ -29,6 +29,11 @@ circuit breaker safeguards the agent from sustained losing streaks.
    ```bash
    npm install
    ```
+
+> Set your AI provider key if you plan to use built-in Anthropicsupport:
+> ```
+> ANTHROPIC_API_KEY=...
+> ```
 4. Build or run in dev mode:
    ```bash
    npm run build       # compile to dist/
@@ -171,6 +176,27 @@ console.log('Result', result);
 - `periodStart` / `periodEnd` – covered timeframe
 
 The output metrics mirror what you’d see in live `core.getStatus()`.
+
+---
+
+## 🤖 AI / Anthropic Support
+
+ISO‑5 ships with a lightweight wrapper for the Anthropic API.  If
+`ANTHROPIC_API_KEY` is defined in your environment the agent can
+summarize logs, generate trade commentary, or assist during development.
+
+Usage example:
+```ts
+import { AnthropicProvider } from './src/integrations/AnthropicProvider';
+
+const cli = new AnthropicProvider(process.env.ANTHROPIC_API_KEY!);
+const note = await cli.summarize("Agent executed 5 trades today...");
+console.log('AI summary', note);
+```
+
+Additional methods (`generate`, etc.) mirror Anthropic's JavaScript
+SDK.  Feel free to swap in any other LLM provider by implementing the
+same interface.
 
 ---
 

@@ -13,7 +13,8 @@
     "openclaw-sdk": "^1.0.0",
     "ethers": "^6.0.0",
     "dotenv": "^16.0.0",
-    "axios": "^1.0.0"
+    "axios": "^1.0.0",
+    "anthropic": "^1.0.0"  
   },
   "devDependencies": {
     "ts-node": "^10.0.0",
