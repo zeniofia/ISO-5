@@ -1,4 +1,4 @@
-![ISO-5 Banner](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==)
+![ISO-5 Banner](./banner.png)
 
 # ISO-5: Institutional Scale Open-source 5-minute Agent
 
@@ -188,7 +188,7 @@ The output metrics mirror what you’d see in live `core.getStatus()`.
 
 # Installation
 
-To install CorGun, follow these steps:
+To install ISO-5, follow these steps:
 
 1. Clone the repository:
 
@@ -197,7 +197,7 @@ To install CorGun, follow these steps:
 
 # Configuration
 
-CorGun supports various configuration options to customize behavior and optimize performance for your specific use case. Configuration can be managed through environment variables, configuration files, or programmatic settings.
+ISO-5 supports various configuration options to customize behavior and optimize performance for your specific use case. Configuration can be managed through environment variables, configuration files, or programmatic settings.
 
 ## # Configuration Options
 
@@ -210,11 +210,11 @@ The following configuration parameters are available:
 
 # Contributing
 
-Contributions to CorGun are welcome and appreciated! We value community input and encourage developers to help improve this project.
+Contributions to ISO-5 are welcome and appreciated! We value community input and encourage developers to help improve this project.
 
 ## # How to Contribute
 
-1. Fork the CorGun repository.
+1. Fork the ISO-5 repository.
 2. Create a new branch for your feature or fix.
 3. Implement your changes, ensuring they adhere to the project's coding standards and guidelines.
 4. Submit a pull request, providing a detailed description of your changes.
@@ -228,4 +228,4 @@ Contributions to CorGun are welcome and appreciated! We value community input an
 
 # License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/Hstkj23/CorGun/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/zeniofia/ISO-5/blob/main/LICENSE) file for details.
