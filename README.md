@@ -178,7 +178,21 @@ console.log('Result', result);
 The output metrics mirror what you’d see in live `core.getStatus()`.
 
 ---
+### 🛸 Solana MEV Support
 
+ISO‑5 now includes a basic Solana MEV provider that can be used to
+observe the Solana mempool and attempt simple frontrun/backrun logic on
+high-frequency trades.  This is experimental and requires a Solana RPC
+endpoint (see `SOLANA_RPC_URL` below).
+
+A sample provider is available at `src/integrations/SolanaMevProvider.ts`.
+
+**Environment:**
+```bash
+SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+```
+
+---
 ## 🤖 AI / Anthropic Support
 
 ISO‑5 ships with a lightweight wrapper for the Anthropic API.  If
