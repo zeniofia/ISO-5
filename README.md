@@ -1,3 +1,5 @@
+![ISO-5 Banner](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==)
+
 # ISO-5: Institutional Scale Open-source 5-minute Agent
 
 ![OpenClaw Verified](https://img.shields.io/badge/OpenClaw-Verified-blue)
